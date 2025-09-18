@@ -1,22 +1,33 @@
-// https://raytracing.github.io/books/RayTracingInOneWeekend.html
- 
-#define TRUE 0
-#define FALSE 1
+#include "Image.h"
 
-struct image {
-    int width, height;
-    char* data; // rgba format (0..255)
-};
+int main ()
+{
+	Image image;
 
-void image_create(int width, int height, image* i) {
-    // check width and height not 0
-    image->width = width;
-    image->height = height;
+	// empty image
+	image_create(256, 256, &image);
 
-    image->data = malloc(width * height * 4);
-}
+	image_write(&image);
 
-int main () {
-    print("Test");
-    return 0;
+	for (int j = 0; j < image.height; j++) {
+		for (int i = 0; i < image.width; i++)
+		{
+			double r = (1.0 * i) / (image.width - 1);
+			double g = (1.0 * j) / (image.height - 1);
+			double b = 0.0;
+
+			int ir = 255.999 * r;
+			int ig = 255.999 * g;
+			int ib = 255.999 * b;
+
+			image.data[0] = ir;
+			image.data[1] = ig;
+			image.data[2] = ib;
+			//image->data[3] = 0;
+		}
+	}
+
+	image_delete(&image);
+	
+	return 0;
 }
