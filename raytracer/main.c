@@ -1,6 +1,3 @@
-#include <stdint.h>
-#include <stdlib.h>
-
 // https://raytracing.github.io/books/RayTracingInOneWeekend.html
  
 #define TRUE 0
